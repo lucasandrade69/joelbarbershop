@@ -1,0 +1,14 @@
+# Segredos e variáveis de ambiente (Nunca versionar)
+.env
+.env.*
+!.env.example
+
+# Diretórios de deploy e dependências
+.vercel/
+.netlify/
+node_modules/
+
+# Arquivos de sistema e logs
+*.log
+.DS_Store
+Thumbs.db

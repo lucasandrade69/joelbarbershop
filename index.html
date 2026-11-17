@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://img.icons8.com; frame-src https://www.google.com https://challenges.cloudflare.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';"
+  />
+  <title>Joel Barber — Cidade Nova, Manaus</title>
+  <meta name="description" content="Joel Barber em Manaus (R. 11, 413 - Cidade Nova). Cortes masculinos, barba terapia e clube de assinatura mensal." />
+  <meta name="theme-color" content="#0b0b0b" />
+
+  <!-- Ícone da Aba do Navegador (Mesma logo de JOEL BARBER) -->
+  <link rel="icon" type="image/png" href="assets/logo-joel-barber.png" />
+  <link rel="apple-touch-icon" href="assets/logo-joel-barber.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 1. CABEÇALHO E BARRA SUPERIOR DE TÓPICOS -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#inicio" class="brand-link">
+        <img
+          src="assets/logo-joel-barber.png"
+          alt="Logo Joel Barber"
+          width="44"
+          height="44"
+          class="brand-logo"
+          data-fallback-img
+        />
+        <div>
+          <span class="brand-title">JOEL BARBER</span>
+          <span class="brand-subtitle">Cidade Nova · Manaus</span>
+        </div>
+      </a>
+
+      <!-- Barra de Navegação por Tópicos (Desktop) -->
+      <nav aria-label="Navegação por Tópicos" class="desktop-nav">
+        <a href="#inicio" class="nav-topic-link active" data-topic="inicio">Início</a>
+        <a href="#sobre" class="nav-topic-link" data-topic="sobre">A Barbearia</a>
+        <a href="#servicos" class="nav-topic-link" data-topic="servicos">Serviços e Preços</a>
+        <a href="#planos" class="nav-topic-link" data-topic="planos">Clube Mensal</a>
+        <a href="#estilos" class="nav-topic-link" data-topic="estilos">Estilos</a>
+        <a href="#avaliacoes" class="nav-topic-link" data-topic="avaliacoes">Avaliações</a>
+        <a href="#contato" class="nav-topic-link" data-topic="contato">Horários e Mapa</a>
+      </nav>
+
+      <!-- Ações Rápidas (Desktop) -->
+      <div class="header-actions">
+        <a
+          href="https://wa.me/559284819171"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-outline"
+        >
+          WhatsApp
+        </a>
+        <a
+          href="https://cashbarber.com.br/joelbarber"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+        >
+          Agendar Agora
+        </a>
+      </div>
+
+      <!-- Botão Menu Mobile -->
+      <button
+        id="mobile-nav-toggle"
+        type="button"
+        aria-label="Abrir menu de navegação"
+        aria-expanded="false"
+        class="mobile-menu-btn"
+      >
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Barra Rápida de Tópicos (Mobile & Tablet) -->
+    <nav aria-label="Atalhos de Seções" class="topic-quickbar">
+      <a href="#inicio" class="topic-pill active" data-topic="inicio">Início</a>
+      <a href="#sobre" class="topic-pill" data-topic="sobre">Sobre</a>
+      <a href="#servicos" class="topic-pill" data-topic="servicos">Serviços</a>
+      <a href="#planos" class="topic-pill" data-topic="planos">Clube Mensal</a>
+      <a href="#estilos" class="topic-pill" data-topic="estilos">Estilos</a>
+      <a href="#avaliacoes" class="topic-pill" data-topic="avaliacoes">Avaliações</a>
+      <a href="#contato" class="topic-pill" data-topic="contato">Horários & Mapa</a>
+    </nav>
+
+    <!-- Gaveta Mobile Completa -->
+    <div id="mobile-nav-panel" class="mobile-drawer hidden">
+      <div class="mobile-drawer-links">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">A Barbearia</a>
+        <a href="#servicos">Serviços e Preços</a>
+        <a href="#planos">Clube de Assinatura</a>
+        <a href="#estilos">Estilos em Alta</a>
+        <a href="#avaliacoes">Avaliações do Google</a>
+        <a href="#contato">Horários, Contato e Mapa</a>
+      </div>
+      <div class="mobile-drawer-actions">
+        <a
+          href="https://wa.me/559284819171"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-outline"
+        >
+          WhatsApp
+        </a>
+        <a
+          href="https://cashbarber.com.br/joelbarber"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+        >
+          Agendar
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 2. HERO SECTION -->
+    <section id="inicio" class="section-block">
+      <div class="container hero-grid">
+        
+        <div>
+          <div class="status-pill">
+            <span id="live-status-dot" class="status-dot"></span>
+            <span id="live-status-label">Seg a Sáb · 09h às 20h</span>
+            <span>·</span>
+            <span>R. 11, 413 - Cidade Nova</span>
+          </div>
+
+          <h1 class="font-heading hero-title">
+            CORTE PRECISO.<br />
+            BARBA ALINHADA.<br />
+            <span>SEM ESPERA.</span>
+          </h1>
+
+          <p class="hero-lead">
+            Barbearia masculina em Manaus focada em acabamento limpo, pontualidade e praticidade. Escolha o seu serviço, reserve seu horário pelo aplicativo ou diretamente no WhatsApp.
+          </p>
+
+          <div class="hero-cta-group">
+            <a
+              href="https://cashbarber.com.br/joelbarber"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+            >
+              Agendar pelo Sistema
+            </a>
+            <a
+              href="https://wa.me/559284819171?text=Ol%C3%A1%2C%20Joel!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+            >
+              AGENDAR PELO WHATSAPP
+            </a>
+          </div>
+        </div>
+
+        <!-- Card de Referência Rápida -->
+        <aside class="quick-card">
+          <div class="quick-card-header">
+            <span class="section-eyebrow" style="margin:0;">Referência Rápida</span>
+            <a
+              href="https://share.google/uXiZ2HyoADHUBMRZQ"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-mono-num"
+              style="font-size:0.78rem; color:var(--accent);"
+            >
+              5.0 ★ Google Maps
+            </a>
+          </div>
+
+          <div class="quick-list">
+            <div class="quick-list-row">
+              <span style="color:var(--text-muted);">Corte Masculino (Degradê / Social)</span>
+              <span class="font-mono-num">R$ 35,00</span>
+            </div>
+            <div class="quick-list-row">
+              <span style="color:var(--text-muted);">Barba Terapia (Limpeza + Toalha)</span>
+              <span class="font-mono-num">R$ 30,00</span>
+            </div>
+            <div class="quick-list-row">
+              <span style="color:var(--text-muted);">Combo Corte + Barba Simples</span>
+              <span class="font-mono-num">R$ 55,00</span>
+            </div>
+            <div class="quick-list-row">
+              <span style="color:var(--text-muted);">Combo Premium Completo</span>
+              <span class="font-mono-num">R$ 95,00</span>
+            </div>
+            <div class="quick-list-row" style="padding-top:0.75rem; border-top:1px solid var(--border); color:var(--accent); font-weight:600;">
+              <span>Clube de Assinatura Mensal</span>
+              <span class="font-mono-num">A partir de R$ 67,90</span>
+            </div>
+          </div>
+
+          <a href="#planos" class="btn btn-outline btn-block">
+            Ver Planos de Assinatura
+          </a>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- 3. SOBRE NÓS (COM ÍCONES ICONS8 NOS 4 BENEFÍCIOS) -->
+    <section id="sobre" class="section-block">
+      <div class="container about-grid">
+        
+        <div>
+          <span class="section-eyebrow">01 / A Barbearia</span>
+          <h2 class="font-heading section-title">
+            TRADIÇÃO E TÉCNICA NA CIDADE NOVA.
+          </h2>
+        </div>
+
+        <div>
+          <p style="font-size:1rem; color:var(--text); margin-bottom:1rem;">
+            Localizada na Rua 11, 413 — Cidade Nova, a Joel Barber foi pensada para o homem que valoriza um visual bem cuidado, ambiente tranquilo e atendimento no horário combinado.
+          </p>
+          <p style="font-size:0.9rem; color:var(--text-muted);">
+            Atendemos desde jovens executivos que mantêm o corte social alinhado toda semana até quem prefere o degradê navalhado moderno. Com o agendamento online e o Clube de Assinatura, você elimina filas e mantém sua imagem sempre em dia.
+          </p>
+
+          <div class="features-grid">
+            <!-- Benefício 1: Hora Marcada -->
+            <div class="feature-box">
+              <div class="feature-icon-wrap">
+                <img
+                  src="https://img.icons8.com/ios-filled/50/c8a45d/clock--v1.png"
+                  alt="Ícone Hora Marcada"
+                  width="22"
+                  height="22"
+                  loading="lazy"
+                  decoding="async"
+                  class="feature-icon"
+                  data-fallback-img
+                />
+              </div>
+              <div>
+                <h3 class="feature-box-title">Hora Marcada</h3>
+                <p class="feature-box-text">Atendimento sem chá de cadeira</p>
+              </div>
+            </div>
+
+            <!-- Benefício 2: Climatizado -->
+            <div class="feature-box">
+              <div class="feature-icon-wrap">
+                <img
+                  src="https://img.icons8.com/ios-filled/50/c8a45d/air-conditioner.png"
+                  alt="Ícone Climatizado"
+                  width="22"
+                  height="22"
+                  loading="lazy"
+                  decoding="async"
+                  class="feature-icon"
+                  data-fallback-img
+                />
+              </div>
+              <div>
+                <h3 class="feature-box-title">Climatizado</h3>
+                <p class="feature-box-text">Conforto e Wi-Fi no local</p>
+              </div>
+            </div>
+
+            <!-- Benefício 3: Clube Mensal -->
+            <div class="feature-box">
+              <div class="feature-icon-wrap">
+                <img
+                  src="https://img.icons8.com/ios-filled/50/c8a45d/crown.png"
+                  alt="Ícone Clube Mensal"
+                  width="22"
+                  height="22"
+                  loading="lazy"
+                  decoding="async"
+                  class="feature-icon"
+                  data-fallback-img
+                />
+              </div>
+              <div>
+                <h3 class="feature-box-title">Clube Mensal</h3>
+                <p class="feature-box-text">Planos ilimitados sem fidelidade</p>
+              </div>
+            </div>
+
+            <!-- Benefício 4: Pagamento -->
+            <div class="feature-box">
+              <div class="feature-icon-wrap">
+                <img
+                  src="https://img.icons8.com/ios-filled/50/c8a45d/bank-cards.png"
+                  alt="Ícone Pagamento"
+                  width="22"
+                  height="22"
+                  loading="lazy"
+                  decoding="async"
+                  class="feature-icon"
+                  data-fallback-img
+                />
+              </div>
+              <div>
+                <h3 class="feature-box-title">Pagamento</h3>
+                <p class="feature-box-text">Pix, cartões de crédito e débito</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. SERVIÇOS E PREÇOS -->
+    <section id="servicos" class="section-block">
+      <div class="container">
+        
+        <div class="section-header section-header-split">
+          <div>
+            <span class="section-eyebrow">02 / Tabela Oficial</span>
+            <h2 class="font-heading section-title">SERVIÇOS E PREÇOS</h2>
+          </div>
+          <p class="section-desc">
+            Toque nos serviços abaixo para montar seu agendamento personalizado pelo WhatsApp ou acesse direto a agenda do CashBarber.
+          </p>
+        </div>
+
+        <div class="category-tabs-bar" role="tablist" aria-label="Categorias de serviços">
+          <button type="button" data-category="todos" class="category-tab active">
+            Todos (15)
+          </button>
+          <button type="button" data-category="principais" class="category-tab">
+            Cortes, Barba & Combos
+          </button>
+          <button type="button" data-category="acabamentos" class="category-tab">
+            Sobrancelha & Acabamentos
+          </button>
+          <button type="button" data-category="quimica" class="category-tab">
+            Química, Luzes & Hidratação
+          </button>
+          <button type="button" data-category="estetica" class="category-tab">
+            Estética Facial
+          </button>
+        </div>
+
+        <div class="services-layout">
+          <div id="services-list" class="services-menu-list"></div>
+
+          <aside class="booking-panel">
+            <div style="border-bottom:1px solid var(--border); padding-bottom:1rem; margin-bottom:1.25rem;">
+              <span class="section-eyebrow">Simulador de Reserva</span>
+              <h3 class="font-heading" style="font-size:1.65rem;">AGENDAMENTO RÁPIDO</h3>
+            </div>
+
+            <div style="margin-bottom:1.25rem;">
+              <span class="field-label">Dia de Preferência:</span>
+              <div class="days-grid">
+                <button type="button" data-day="Terça-feira" class="day-btn active">Terça</button>
+                <button type="button" data-day="Quarta-feira" class="day-btn">Quarta</button>
+                <button type="button" data-day="Quinta-feira" class="day-btn">Quinta</button>
+                <button type="button" data-day="Sexta-feira" class="day-btn">Sexta</button>
+                <button type="button" data-day="Sábado" class="day-btn">Sábado</button>
+                <button type="button" data-day="Segunda-feira" class="day-btn">Segunda</button>
+              </div>
+            </div>
+
+            <div style="margin-bottom:1.25rem;">
+              <label for="period-select" class="field-label">Período Desejado:</label>
+              <select id="period-select">
+                <option value="Manhã (09h às 12h)">Manhã (09h às 12h)</option>
+                <option value="Tarde (14h às 18h)" selected>Tarde (14h às 18h)</option>
+                <option value="Noite (18h às 20h)">Noite (18h às 20h)</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom:1.25rem;">
+              <span class="field-label">Serviços Selecionados:</span>
+              <div id="selected-services-summary"></div>
+            </div>
+
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:1rem 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); margin-bottom:1.25rem;">
+              <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted);">Estimativa Total</span>
+              <span id="selected-total-price" class="font-mono-num" style="font-size:1.2rem; font-weight:600; color:var(--accent);">R$ 35,00</span>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:0.625rem;">
+              <a
+                id="confirm-whatsapp-btn"
+                href="https://wa.me/559284819171"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary btn-block"
+              >
+                Agendar pelo WhatsApp
+              </a>
+              <a
+                href="https://cashbarber.com.br/joelbarber"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline btn-block"
+              >
+                Abrir Agenda CashBarber
+              </a>
+            </div>
+          </aside>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. CLUBE DE ASSINATURA -->
+    <section id="planos" class="section-block section-alt">
+      <div class="container">
+        
+        <div class="section-header section-header-split">
+          <div>
+            <span class="section-eyebrow">03 / Assinatura Mensal</span>
+            <h2 class="font-heading section-title">CLUBE JOEL BARBER</h2>
+          </div>
+          <p class="section-desc">
+            Pague um único valor fixo por mês e mantenha o corte e a barba alinhados quantas vezes precisar. Sem fidelidade.
+          </p>
+        </div>
+
+        <div class="plans-grid">
+          
+          <article class="plan-card featured">
+            <div>
+              <div class="plan-meta">
+                <span style="color:var(--accent); font-weight:700;">★ Mais Vendido</span>
+                <span style="color:var(--text-muted);">Seg a Sáb</span>
+              </div>
+              <h3 class="font-heading" style="font-size:1.6rem;">CORTE + BARBA ILIMITADO</h3>
+              <div class="plan-price-block">
+                <span class="plan-price-value">R$ 144,90</span>
+                <span style="font-size:0.75rem; color:var(--text-muted);">por mês · vigência indeterminada</span>
+              </div>
+              <ul class="plan-features">
+                <li>— Cortes ilimitados durante o mês</li>
+                <li>— Barba ilimitada durante o mês</li>
+                <li>— Válido em todos os dias de funcionamento</li>
+                <li>— Cupom de vantagens para assinantes</li>
+              </ul>
+            </div>
+            <a
+              href="https://cashbarber.com.br/joelbarber"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary btn-block"
+            >
+              Assinar Plano
+            </a>
+          </article>
+
+          <article class="plan-card">
+            <div>
+              <div class="plan-meta">
+                <span style="color:var(--text); font-weight:600;">Restam 12 vagas</span>
+                <span style="color:var(--text-muted);">Ter · Qua · Qui</span>
+              </div>
+              <h3 class="font-heading" style="font-size:1.6rem;">CORTE LIMITADO</h3>
+              <div class="plan-price-block">
+                <span class="plan-price-value">R$ 67,90</span>
+                <span style="font-size:0.75rem; color:var(--text-muted);">por mês · vigência indeterminada</span>
+              </div>
+              <ul class="plan-features">
+                <li>— Cortes sem limite de visitas no mês</li>
+                <li>— Atendimento às terças, quartas e quintas</li>
+                <li>— Compensa já a partir do 2º corte</li>
+                <li>— Sem fidelidade contratual</li>
+              </ul>
+            </div>
+            <a
+              href="https://cashbarber.com.br/joelbarber"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline btn-block"
+            >
+              Assinar Plano
+            </a>
+          </article>
+
+          <article class="plan-card">
+            <div>
+              <div class="plan-meta">
+                <span style="color:var(--text-muted);">Pacote Duplo</span>
+                <span style="color:var(--text-muted);">Ter · Qua · Qui</span>
+              </div>
+              <h3 class="font-heading" style="font-size:1.6rem;">CORTE + BARBA LIMITADO</h3>
+              <div class="plan-price-block">
+                <span class="plan-price-value">R$ 124,90</span>
+                <span style="font-size:0.75rem; color:var(--text-muted);">por mês · vigência indeterminada</span>
+              </div>
+              <ul class="plan-features">
+                <li>— Corte e barba toda semana</li>
+                <li>— Atendimento às terças, quartas e quintas</li>
+                <li>— Economia inteligente para sua rotina</li>
+                <li>— Agendamento direto pelo sistema</li>
+              </ul>
+            </div>
+            <a
+              href="https://cashbarber.com.br/joelbarber"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline btn-block"
+            >
+              Assinar Plano
+            </a>
+          </article>
+
+          <article class="plan-card">
+            <div>
+              <div class="plan-meta">
+                <span style="color:var(--text-muted);">Foco na Barba</span>
+                <span style="color:var(--text-muted);">Ter · Qua · Qui</span>
+              </div>
+              <h3 class="font-heading" style="font-size:1.6rem;">BARBA LIMITADO</h3>
+              <div class="plan-price-block">
+                <span class="plan-price-value">R$ 81,90</span>
+                <span style="font-size:0.75rem; color:var(--text-muted);">por mês · vigência indeterminada</span>
+              </div>
+              <ul class="plan-features">
+                <li>— Alinhamento de barba ilimitado</li>
+                <li>— Atendimento às terças, quartas e quintas</li>
+                <li>— Contornos sempre limpos na navalha</li>
+                <li>— Vigência mensal indeterminada</li>
+              </ul>
+            </div>
+            <a
+              href="https://cashbarber.com.br/joelbarber"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline btn-block"
+            >
+              Assinar Plano
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. GALERIA / ESTILOS EM ALTA (IMAGENS WEBP P&B OTIMIZADAS NO SERVIDOR) -->
+    <section id="estilos" class="section-block">
+      <div class="container">
+        
+        <div class="section-header section-header-split">
+          <div>
+            <span class="section-eyebrow">04 / Portfólio</span>
+            <h2 class="font-heading section-title">ESTILOS EM ALTA</h2>
+          </div>
+          <a
+            href="https://www.instagram.com/joel_barbershop25/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline"
+          >
+            Instagram @joel_barbershop25 ↗
+          </a>
+        </div>
+
+        <div class="styles-grid">
+          
+          <article class="style-card">
+            <div>
+              <div class="style-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=480&q=70&sat=-100&con=15&fm=webp"
+                  alt="Corte Degradê Navalhado"
+                  width="480"
+                  height="360"
+                  class="style-img"
+                  loading="lazy"
+                  decoding="async"
+                  crossorigin="anonymous"
+                  data-fallback-img
+                />
+              </div>
+              <div class="style-body">
+                <span class="font-mono-num" style="font-size:0.75rem; color:var(--accent);">01</span>
+                <h3 class="font-heading" style="font-size:1.5rem; margin-top:0.2rem;">DEGRADÊ & TAPER FADE</h3>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.4rem;">
+                  Transição limpa na máquina e navalha (Low, Mid ou High Fade) com acabamento preciso no pezinho.
+                </p>
+              </div>
+            </div>
+            <div class="style-footer">
+              <span class="font-mono-num">R$ 35,00</span>
+              <a href="https://cashbarber.com.br/joelbarber" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">Agendar →</a>
+            </div>
+          </article>
+
+          <article class="style-card">
+            <div>
+              <div class="style-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=480&q=70&sat=-100&con=15&fm=webp"
+                  alt="Barba Terapia na Toalha Quente"
+                  width="480"
+                  height="360"
+                  class="style-img"
+                  loading="lazy"
+                  decoding="async"
+                  crossorigin="anonymous"
+                  data-fallback-img
+                />
+              </div>
+              <div class="style-body">
+                <span class="font-mono-num" style="font-size:0.75rem; color:var(--accent);">02</span>
+                <h3 class="font-heading" style="font-size:1.5rem; margin-top:0.2rem;">BARBA TERAPIA</h3>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.4rem;">
+                  Alinhamento geométrico na navalha acompanhado de limpeza de pele, toalha quente e hidratação.
+                </p>
+              </div>
+            </div>
+            <div class="style-footer">
+              <span class="font-mono-num">R$ 30,00</span>
+              <a href="https://cashbarber.com.br/joelbarber" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">Agendar →</a>
+            </div>
+          </article>
+
+          <article class="style-card">
+            <div>
+              <div class="style-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=480&q=70&sat=-100&con=15&fm=webp"
+                  alt="Corte Social Clássico na Tesoura"
+                  width="480"
+                  height="360"
+                  class="style-img"
+                  loading="lazy"
+                  decoding="async"
+                  crossorigin="anonymous"
+                  data-fallback-img
+                />
+              </div>
+              <div class="style-body">
+                <span class="font-mono-num" style="font-size:0.75rem; color:var(--accent);">03</span>
+                <h3 class="font-heading" style="font-size:1.5rem; margin-top:0.2rem;">SOCIAL & EXECUTIVO</h3>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.4rem;">
+                  Corte clássico na tesoura e máquina com caimento natural, ideal para a rotina corporativa.
+                </p>
+              </div>
+            </div>
+            <div class="style-footer">
+              <span class="font-mono-num">R$ 35,00</span>
+              <a href="https://cashbarber.com.br/joelbarber" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">Agendar →</a>
+            </div>
+          </article>
+
+          <article class="style-card">
+            <div>
+              <div class="style-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=480&q=70&sat=-100&con=15&fm=webp"
+                  alt="Luzes e Pigmentação"
+                  width="480"
+                  height="360"
+                  class="style-img"
+                  loading="lazy"
+                  decoding="async"
+                  crossorigin="anonymous"
+                  data-fallback-img
+                />
+              </div>
+              <div class="style-body">
+                <span class="font-mono-num" style="font-size:0.75rem; color:var(--accent);">04</span>
+                <h3 class="font-heading" style="font-size:1.5rem; margin-top:0.2rem;">LUZES & PIGMENTAÇÃO</h3>
+                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.4rem;">
+                  Reflexos no tom de mel com hidratação inclusa, relaxamento capilar e pigmentação de barba.
+                </p>
+              </div>
+            </div>
+            <div class="style-footer">
+              <span class="font-mono-num">A partir de R$ 25</span>
+              <a href="https://cashbarber.com.br/joelbarber" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">Agendar →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. DEPOIMENTOS — LOOP DE AVALIAÇÕES DO GOOGLE -->
+    <section id="avaliacoes" class="section-block section-alt">
+      <div class="container" style="margin-bottom:2rem;">
+        <div class="section-header section-header-split" style="margin-bottom:0;">
+          <div>
+            <span class="section-eyebrow">05 / Avaliações Verificadas</span>
+            <h2 class="font-heading section-title">NOTA 5.0 NO GOOGLE MAPS</h2>
+          </div>
+          <a
+            href="https://share.google/uXiZ2HyoADHUBMRZQ"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline"
+          >
+            Ver / Avaliar no Google ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="reviews-loop-viewport" aria-label="Loop de avaliações do Google">
+        <div id="reviews-loop-track" class="reviews-loop-track">
+          
+          <article class="review-card">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                <strong style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em;">Rafael Mendonça</strong>
+                <span style="color:var(--accent); font-size:0.8rem;">★★★★★</span>
+              </div>
+              <p style="font-size:0.82rem; color:var(--text-muted);">
+                "Corte degradê muito bem feito e atendimento pontual. Marquei pelo link, cheguei na barbearia na Cidade Nova e fui atendido na hora."
+              </p>
+            </div>
+            <span style="font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); margin-top:1rem;">Avaliação no Google</span>
+          </article>
+
+          <article class="review-card">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                <strong style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em;">Lucas Silva</strong>
+                <span style="color:var(--accent); font-size:0.8rem;">★★★★★</span>
+              </div>
+              <p style="font-size:0.82rem; color:var(--text-muted);">
+                "Fiz o plano de assinatura de terça a quinta e vale muito a pena. Toda semana mantenho o cabelo e a barba alinhados sem pagar a mais."
+              </p>
+            </div>
+            <span style="font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); margin-top:1rem;">Avaliação no Google</span>
+          </article>
+
+          <article class="review-card">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                <strong style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em;">Gabriel Azevedo</strong>
+                <span style="color:var(--accent); font-size:0.8rem;">★★★★★</span>
+              </div>
+              <p style="font-size:0.82rem; color:var(--text-muted);">
+                "Ambiente limpo, climatizado e atendimento profissional. A barba terapia com limpeza de pele é excelente. Recomendo."
+              </p>
+            </div>
+            <span style="font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); margin-top:1rem;">Avaliação no Google</span>
+          </article>
+
+          <article class="review-card">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                <strong style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em;">Matheus Oliveira</strong>
+                <span style="color:var(--accent); font-size:0.8rem;">★★★★★</span>
+              </div>
+              <p style="font-size:0.82rem; color:var(--text-muted);">
+                "Capricho nos detalhes do pezinho e sobrancelha. Fácil localização na Rua 11 e preço justo pela qualidade do serviço."
+              </p>
+            </div>
+            <span style="font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); margin-top:1rem;">Avaliação no Google</span>
+          </article>
+
+          <!-- Duplicação para o Loop Contínuo -->
+          <article class="review-card" aria-hidden="true">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                <strong style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em;">Rafael Mendonça</strong>
+                <span style="color:var(--accent); font-size:0.8rem;">★★★★★</span>
+              </div>
+              <p style="font-size:0.82rem; color:var(--text-muted);">
+                "Corte degradê muito bem feito e atendimento pontual. Marquei pelo link, cheguei na barbearia na Cidade Nova e fui atendido na hora."
+              </p>
+            </div>
+            <span style="font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); margin-top:1rem;">Avaliação no Google</span>
+          </article>
+
+          <article class="review-card" aria-hidden="true">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                <strong style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em;">Lucas Silva</strong>
+                <span style="color:var(--accent); font-size:0.8rem;">★★★★★</span>
+              </div>
+              <p style="font-size:0.82rem; color:var(--text-muted);">
+                "Fiz o plano de assinatura de terça a quinta e vale muito a pena. Toda semana mantenho o cabelo e a barba alinhados sem pagar a mais."
+              </p>
+            </div>
+            <span style="font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); margin-top:1rem;">Avaliação no Google</span>
+          </article>
+
+          <article class="review-card" aria-hidden="true">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                <strong style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em;">Gabriel Azevedo</strong>
+                <span style="color:var(--accent); font-size:0.8rem;">★★★★★</span>
+              </div>
+              <p style="font-size:0.82rem; color:var(--text-muted);">
+                "Ambiente limpo, climatizado e atendimento profissional. A barba terapia com limpeza de pele é excelente. Recomendo."
+              </p>
+            </div>
+            <span style="font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); margin-top:1rem;">Avaliação no Google</span>
+          </article>
+
+          <article class="review-card" aria-hidden="true">
+            <div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                <strong style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em;">Matheus Oliveira</strong>
+                <span style="color:var(--accent); font-size:0.8rem;">★★★★★</span>
+              </div>
+              <p style="font-size:0.82rem; color:var(--text-muted);">
+                "Capricho nos detalhes do pezinho e sobrancelha. Fácil localização na Rua 11 e preço justo pela qualidade do serviço."
+              </p>
+            </div>
+            <span style="font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim); margin-top:1rem;">Avaliação no Google</span>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. HORÁRIOS, CONTATO E LOCALIZAÇÃO -->
+    <section id="contato" class="section-block" style="border-bottom:none;">
+      <div class="container">
+        
+        <div class="contact-grid">
+          <div class="hours-card">
+            <span class="section-eyebrow">06 / Expediente</span>
+            <h2 class="font-heading" style="font-size:2.1rem; margin-bottom:1.25rem;">HORÁRIO DE FUNCIONAMENTO</h2>
+
+            <div class="hours-list">
+              <div data-day-row="1" class="hours-row">
+                <span>Segunda-feira <span class="today-indicator hidden" style="color:var(--accent); font-size:0.7rem;">(Hoje)</span></span>
+                <span class="font-mono-num">09:00 — 20:00</span>
+              </div>
+              <div data-day-row="2" class="hours-row">
+                <span>Terça-feira <span class="today-indicator hidden" style="color:var(--accent); font-size:0.7rem;">(Hoje)</span></span>
+                <span class="font-mono-num">09:00 — 20:00</span>
+              </div>
+              <div data-day-row="3" class="hours-row">
+                <span>Quarta-feira <span class="today-indicator hidden" style="color:var(--accent); font-size:0.7rem;">(Hoje)</span></span>
+                <span class="font-mono-num">09:00 — 20:00</span>
+              </div>
+              <div data-day-row="4" class="hours-row">
+                <span>Quinta-feira <span class="today-indicator hidden" style="color:var(--accent); font-size:0.7rem;">(Hoje)</span></span>
+                <span class="font-mono-num">09:00 — 20:00</span>
+              </div>
+              <div data-day-row="5" class="hours-row">
+                <span>Sexta-feira <span class="today-indicator hidden" style="color:var(--accent); font-size:0.7rem;">(Hoje)</span></span>
+                <span class="font-mono-num">09:00 — 20:00</span>
+              </div>
+              <div data-day-row="6" class="hours-row">
+                <span>Sábado <span class="today-indicator hidden" style="color:var(--accent); font-size:0.7rem;">(Hoje)</span></span>
+                <span class="font-mono-num">09:00 — 20:00</span>
+              </div>
+              <div data-day-row="0" class="hours-row" style="border-bottom:none; color:var(--text-dim);">
+                <span>Domingo <span class="today-indicator hidden" style="color:var(--accent); font-size:0.7rem;">(Hoje)</span></span>
+                <span class="font-mono-num">Fechado</span>
+              </div>
+            </div>
+
+            <div style="margin-top:1.5rem; padding-top:1.25rem; border-top:1px solid var(--border);">
+              <span class="field-label">WhatsApp Oficial:</span>
+              <a
+                href="https://wa.me/559284819171"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-mono-num"
+                style="font-size:1.1rem; color:var(--accent); font-weight:600;"
+              >
+                +55 92 8481-9171
+              </a>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <span class="section-eyebrow">07 / Mensagem Direta</span>
+            <h2 class="font-heading" style="font-size:2.1rem; margin-bottom:0.35rem;">FALE COM A BARBEARIA</h2>
+            <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:1.5rem;">
+              Envie dúvidas sobre planos mensais, agendamentos ou parcerias.
+            </p>
+
+            <form id="secure-contact-form" action="/api/contact" method="POST" novalidate style="display:flex; flex-direction:column; gap:1rem;">
+              <div class="hp-trap" aria-hidden="true">
+                <label for="website_url">Não preencha este campo</label>
+                <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off" />
+              </div>
+              <input type="hidden" id="form_loaded_at" name="form_loaded_at" value="" />
+
+              <div class="form-row-2">
+                <div>
+                  <label for="client_name" class="field-label">Seu Nome *</label>
+                  <input
+                    type="text"
+                    id="client_name"
+                    name="name"
+                    required
+                    minlength="2"
+                    maxlength="80"
+                    autocomplete="name"
+                    placeholder="Nome completo"
+                  />
+                </div>
+                <div>
+                  <label for="client_phone" class="field-label">Telefone / WhatsApp *</label>
+                  <input
+                    type="tel"
+                    id="client_phone"
+                    name="phone"
+                    required
+                    minlength="8"
+                    maxlength="20"
+                    autocomplete="tel"
+                    placeholder="(92) 98481-9171"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="client_subject" class="field-label">Assunto *</label>
+                <select id="client_subject" name="subject" required>
+                  <option value="Dúvida sobre Agendamento">Dúvida sobre Agendamento</option>
+                  <option value="Clube de Assinatura Mensal">Clube de Assinatura Mensal</option>
+                  <option value="Elogio ou Sugestão">Elogio ou Sugestão</option>
+                  <option value="Outro Assunto">Outro Assunto</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="client_message" class="field-label">Mensagem *</label>
+                <textarea
+                  id="client_message"
+                  name="message"
+                  rows="3"
+                  required
+                  minlength="5"
+                  maxlength="500"
+                  placeholder="Escreva sua mensagem..."
+                ></textarea>
+              </div>
+
+              <div id="contact-feedback" role="status" aria-live="polite" class="feedback-banner hidden"></div>
+
+              <div>
+                <button type="submit" id="contact-submit-btn" class="btn btn-primary">
+                  Enviar Mensagem
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Mapa com Carregamento Diferido (Lazy Load para não travar a abertura do site) -->
+        <div class="map-card">
+          <div class="section-header section-header-split" style="margin-bottom:1.5rem;">
+            <div>
+              <span class="section-eyebrow">Localização</span>
+              <h2 class="font-heading" style="font-size:2.1rem;">R. 11, 413 — CIDADE NOVA, MANAUS - AM</h2>
+              <p style="font-size:0.82rem; color:var(--text-muted);">CEP 69099-447</p>
+            </div>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=R.+11,+413+-+Cidade+Nova,+Manaus+-+AM,+69099-447"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+            >
+              Abrir no Google Maps ↗
+            </a>
+          </div>
+
+          <div class="map-frame-box">
+            <iframe
+              id="lazy-google-map"
+              title="Mapa Joel Barber"
+              data-src="https://www.google.com/maps?q=R.+11,+413+-+Cidade+Nova,+Manaus+-+AM,+69099-447&output=embed"
+              src="about:blank"
+              class="map-iframe"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              sandbox="allow-scripts allow-same-origin allow-popups"
+            ></iframe>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- 9. RODAPÉ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <span class="font-heading" style="font-size:1.35rem; color:var(--text); letter-spacing:0.08em; display:block;">JOEL BARBER</span>
+        <p style="margin-top:0.25rem;">R. 11, 413 - Cidade Nova, Manaus - AM, 69099-447 · WhatsApp: +55 92 8481-9171</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://cashbarber.com.br/joelbarber" target="_blank" rel="noopener noreferrer">CashBarber</a>
+        <a href="https://www.instagram.com/joel_barbershop25/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://share.google/uXiZ2HyoADHUBMRZQ" target="_blank" rel="noopener noreferrer">Google Maps</a>
+        <a href="https://wa.me/559284819171" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÃO FLUTUANTE DE WHATSAPP -->
+  <a
+    href="https://wa.me/559284819171?text=Ol%C3%A1%2C%20Joel!%20Vim%20pelo%20site%20e%20quero%20agendar%20um%20hor%C3%A1rio."
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Falar no WhatsApp +55 92 8481-9171"
+    class="whatsapp-fab"
+  >
+    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20.52 3.48A11.82 11.82 0 0012.04 0C5.5 0 .17 5.33.17 11.87c0 2.09.55 4.14 1.59 5.95L0 24l6.35-1.66a11.84 11.84 0 005.69 1.45h.01c6.54 0 11.87-5.33 11.87-11.87 0-3.17-1.24-6.15-3.4-8.44zM12.05 21.8h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.77.99 1.01-3.67-.24-.38a9.85 9.85 0 01-1.51-5.28c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.13 1.03 7 2.9a9.83 9.83 0 012.89 6.99c0 5.45-4.44 9.92-9.88 9.92zm5.42-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/>
+    </svg>
+  </a>
+
+  <!-- BARRA FIXA INFERIOR MOBILE -->
+  <div class="mobile-bottom-bar">
+    <a
+      href="https://wa.me/559284819171"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-outline"
+    >
+      WhatsApp
+    </a>
+    <a
+      href="https://cashbarber.com.br/joelbarber"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-primary"
+    >
+      Agendar
+    </a>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
