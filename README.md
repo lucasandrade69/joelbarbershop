@@ -1,35 +1,44 @@
-# Joel Barber — Site Oficial (`joelbarbershop`)
+# Joel Barber — Site oficial
 
-Site institucional e plataforma de pré-agendamento da **Joel Barber**, localizada na **R. 11, 413 - Cidade Nova, Manaus - AM, CEP 69099-447**.
+Site estático (HTML + CSS + JS puro, sem build e sem dependências) da **Joel Barber** — R. 11, 413 · Cidade Nova, Manaus-AM · WhatsApp +55 92 8481-9171.
+Publicado no **GitHub Pages**: https://lucasandrade69.github.io/joelbarbershop/
 
-## Funcionalidades
-
-- **Design Minimalista em Preto Fosco:** Layout responsivo (mobile, tablet e desktop) com barra superior de navegação por tópicos e atalhos rápidos.
-- **Tabela de Serviços & Simulador de Agendamento:** Catálogo com os 15 serviços oficiais, filtro por categoria e envio direto do resumo para o WhatsApp (`+55 92 8481-9171`) ou agendamento via [CashBarber](https://cashbarber.com.br/joelbarber).
-- **Clube de Assinatura Mensal:** Apresentação dos 4 planos recorrentes oficiais.
-- **Loop Contínuo de Avaliações do Google:** Faixa animada com pausa automática fora da tela para economia de bateria/CPU.
-- **Segurança (AppSec Hardened):**
-  - Cabeçalhos HTTP rigorosos (`Content-Security-Policy`, `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Permissions-Policy` e `HSTS`) pré-configurados em `vercel.json`, `netlify.toml` e `.htaccess`.
-  - Formulário de contato protegido com sanitização anti-XSS, *Honeypot*, *Time-Trap* e *Rate Limiting* (cliente + endpoint Serverless `api/contact.js`).
-
-## Estrutura de Arquivos
+## Estrutura
 
 ```text
-├── assets/
-│   └── logo-joel-barber.png   # Logo e ícone oficial (Favicon)
-├── api/
-│   └── contact.js             # Endpoint Serverless protegido (Rate Limit + Anti-Bot)
-├── index.html                 # Página principal
-├── style.css                  # Estilização responsiva e animações otimizadas
-├── script.js                  # Lógica de catálogo, simulador WhatsApp e segurança
-├── vercel.json                # Configuração de Security Headers para Vercel
-├── netlify.toml               # Configuração de Security Headers para Netlify
-├── .htaccess                  # Configuração de Security Headers para Apache/Hostinger
-└── .env.example               # Modelo de variáveis de ambiente
+index.html        Página única (SEO, Schema.org BarberShop, conteúdo)
+style.css         Estilos (variáveis em :root; breakpoints 640 / 960 / 1100 px)
+script.js         Serviços + simulador de reserva, carrossel, lightbox, formulário, menu, status "aberto agora"
+assets/           Logo e ícones
+img/              Fotografias reais da barbearia (portfólio)
+favicon.ico · sitemap.xml · robots.txt · .nojekyll
+tests/            smoke.html (testes), frame.html (screenshots em largura exata), serve.ps1
+docs/             RELATORIO.md e docs/screenshots/
+api/ vercel.json netlify.toml .htaccess .env.example   Opcionais; NÃO são usados no GitHub Pages
 ```
 
-## Como Publicar (GitHub Pages / Vercel / Netlify)
+## Publicar
+Settings → Pages → branch `main`, pasta `/ (root)`. Todos os caminhos são relativos (o site vive em `/joelbarbershop/`).
+`robots.txt`/`sitemap.xml` só são lidos por buscadores na raiz do domínio; em site de projeto no GitHub Pages, envie o sitemap pelo Google Search Console.
 
-1. Suba os arquivos deste repositório para `joelbarbershop` no GitHub.
-2. Para **GitHub Pages**: acesse **Settings > Pages**, selecione a branch `main` (pasta `/root`) e clique em **Save**.
-3. Para **Vercel** ou **Netlify**: importe o repositório `joelbarbershop` e o deploy será automático com todos os cabeçalhos de segurança ativos.
+## Manutenção — onde editar
+| O quê | Onde |
+|---|---|
+| Serviços e preços (simulador) | `SERVICES_DATA` em `script.js` |
+| Telefone / links | `PUBLIC_CONFIG` em `script.js` **e** os `href` de `index.html` (buscar `559284819171`) |
+| Planos do clube | seção `#planos` do `index.html` |
+| Avaliações | `<li class="review-card">` em `#avaliacoes`. Use só avaliações reais do Google; nunca duplique cards |
+| Fotos do portfólio | arquivos em `img/` e cards em `#estilos` (`src`, `data-full`, `alt`, `data-caption`, `width`/`height` e classe de enquadramento) |
+| Horário | `#contato`, `updateLiveHoursStatus()` e JSON-LD no `<head>` |
+| Formulário via servidor | `PUBLIC_CONFIG.contactApiUrl` (vazio = abre o WhatsApp; padrão no GitHub Pages) |
+
+Fotos novas: salve em `assets/images/` (`portfolio/`, `barbearia/`, `equipe/`, `hero/`), em WebP (~800 px e ~1400 px), com `width`/`height` e `loading="lazy"` (exceto a imagem do hero).
+
+## Testes locais
+Sirva a pasta com qualquer servidor HTTP estático e abra `/tests/smoke.html`, ou:
+`chrome --headless --dump-dom --virtual-time-budget=40000 http://localhost:8765/tests/smoke.html`.
+Valida em 6 resoluções: overflow, botões < 40 px, carrossel, lightbox, simulador/WhatsApp, menu, IDs duplicados, telefone.
+Screenshots em largura exata: `/tests/frame.html?w=390&h=844`.
+
+## Pendências de conteúdo
+Ver `docs/RELATORIO.md`.

@@ -9,6 +9,8 @@
     cashbarberUrl: 'https://cashbarber.com.br/joelbarber',
     instagramUrl: 'https://www.instagram.com/joel_barbershop25/',
     googleReviewsUrl: 'https://share.google/uXiZ2HyoADHUBMRZQ',
+    // Endpoint serverless opcional (ex.: Vercel/Netlify). Vazio = GitHub Pages: envia direto ao WhatsApp.
+    contactApiUrl: '',
     minSubmitTimeMs: 2500,
     rateLimitCooldownMs: 60000
   });
@@ -162,7 +164,7 @@
     selectedCategory: 'todos',
     selectedServiceIds: new Set(['cortes']),
     selectedDay: 'Terça-feira',
-    selectedPeriod: 'Tarde (14h às 18h)',
+    selectedPeriod: 'Tarde (12h às 18h)',
     lastSubmissionAt: 0
   };
 
@@ -182,14 +184,6 @@
   function buildWhatsAppUrl(message) {
     const cleanMessage = sanitizePlainText(message, 1000);
     return `https://wa.me/${PUBLIC_CONFIG.whatsappNumber}?text=${encodeURIComponent(cleanMessage)}`;
-  }
-
-  function setupImageFallbacks() {
-    document.querySelectorAll('img[data-fallback-img]').forEach((img) => {
-      img.addEventListener('error', function () {
-        this.classList.add('hidden');
-      });
-    });
   }
 
   /* Renderização com DocumentFragment (apenas 1 reflow no DOM) */
@@ -246,6 +240,8 @@
       checkBtn.setAttribute('aria-label', `Selecionar ${service.name}`);
       checkBtn.className = `service-select-btn ${isSelected ? 'is-selected' : ''}`;
       checkBtn.textContent = isSelected ? 'Selecionado' : 'Selecionar';
+      checkBtn.setAttribute('aria-pressed', String(isSelected));
+      checkBtn.dataset.serviceId = service.id;
 
       rightCol.appendChild(priceEl);
       rightCol.appendChild(checkBtn);
@@ -255,8 +251,13 @@
       fragment.appendChild(row);
     });
 
+    const hadFocus = container.contains(document.activeElement) ? document.activeElement.dataset.serviceId : null;
     container.textContent = '';
     container.appendChild(fragment);
+    if (hadFocus) {
+      const again = container.querySelector('[data-service-id="' + hadFocus + '"]');
+      if (again) again.focus({ preventScroll: true });
+    }
   }
 
   function toggleService(serviceId) {
@@ -284,8 +285,7 @@
 
     if (selected.length === 0) {
       const empty = document.createElement('p');
-      empty.style.fontSize = '0.78rem';
-      empty.style.color = 'var(--text-muted)';
+      empty.className = 'booking-empty';
       empty.textContent = 'Toque nos serviços ao lado para incluir no seu agendamento.';
       fragment.appendChild(empty);
     } else {
@@ -298,7 +298,6 @@
 
         const priceSpan = document.createElement('span');
         priceSpan.className = 'font-mono-num';
-        priceSpan.style.color = 'var(--text-muted)';
         priceSpan.textContent = item.priceLabel;
 
         line.appendChild(nameSpan);
@@ -331,8 +330,12 @@
   function setupFiltersAndControls() {
     document.querySelectorAll('.category-tab').forEach((tab) => {
       tab.addEventListener('click', () => {
-        document.querySelectorAll('.category-tab').forEach((t) => t.classList.remove('active'));
+        document.querySelectorAll('.category-tab').forEach((t) => {
+          t.classList.remove('active');
+          t.setAttribute('aria-pressed', 'false');
+        });
         tab.classList.add('active');
+        tab.setAttribute('aria-pressed', 'true');
         state.selectedCategory = sanitizePlainText(tab.getAttribute('data-category') || 'todos', 30);
         renderServicesList();
       });
@@ -340,8 +343,12 @@
 
     document.querySelectorAll('.day-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.day-btn').forEach((b) => b.classList.remove('active'));
+        document.querySelectorAll('.day-btn').forEach((b) => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
         state.selectedDay = sanitizePlainText(btn.getAttribute('data-day') || 'Terça-feira', 30);
         updateBookingBox();
       });
@@ -358,8 +365,7 @@
 
   /* Observador único de performance:
      1. Atualiza tópico ativo na barra superior
-     2. Pausa a animação das avaliações quando fora da tela (economia de CPU/GPU)
-     3. Carrega o Google Maps apenas quando o usuário se aproxima do rodapé (elimina travamento inicial) */
+     2. Carrega o Google Maps apenas quando o usuário se aproxima do rodapé (elimina travamento inicial) */
   function setupObserversAndPerformance() {
     if (!('IntersectionObserver' in window)) {
       const mapEl = document.getElementById('lazy-google-map');
@@ -384,21 +390,6 @@
       { rootMargin: '-25% 0px -60% 0px', threshold: 0 }
     );
     sections.forEach((sec) => topicObserver.observe(sec));
-
-    // Pausa o loop das avaliações quando não está visível na tela
-    const reviewsSection = document.getElementById('avaliacoes');
-    const reviewsTrack = document.getElementById('reviews-loop-track');
-    if (reviewsSection && reviewsTrack) {
-      const marqueeObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            reviewsTrack.classList.toggle('is-offscreen', !entry.isIntersecting);
-          });
-        },
-        { rootMargin: '100px' }
-      );
-      marqueeObserver.observe(reviewsSection);
-    }
 
     // Carrega o iframe do Google Maps somente quando o usuário chega perto da seção de contato
     const mapIframe = document.getElementById('lazy-google-map');
@@ -492,8 +483,8 @@
       if (submitBtn) submitBtn.disabled = true;
 
       try {
-        if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
-          const response = await fetch('/api/contact', {
+        if (PUBLIC_CONFIG.contactApiUrl) {
+          const response = await fetch(PUBLIC_CONFIG.contactApiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -571,6 +562,14 @@
       btn.setAttribute('aria-expanded', String(!isHidden));
     });
 
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
+    });
+
     menu.querySelectorAll('a').forEach((a) => {
       a.addEventListener('click', () => {
         menu.classList.add('hidden');
@@ -579,8 +578,185 @@
     });
   }
 
+  /* Carrossel de avaliações: scroll-snap nativo (arraste/touch/teclado) + setas + indicadores */
+  function setupReviewsCarousel() {
+    const root = document.getElementById('reviews-carousel');
+    const dotsEl = document.getElementById('reviews-dots');
+    if (!root || !dotsEl) return;
+
+    const viewport = root.querySelector('.carousel-viewport');
+    const prev = root.querySelector('.carousel-prev');
+    const next = root.querySelector('.carousel-next');
+    const cards = Array.from(root.querySelectorAll('.review-card'));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let autoplayId = null;
+    let stopped = reduceMotion;
+    let pages = 1;
+    let current = 0;
+
+    const behavior = () => (reduceMotion ? 'auto' : 'smooth');
+    const maxScroll = () => viewport.scrollWidth - viewport.clientWidth;
+    const step = () => {
+      const gap = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft - cards[0].offsetWidth : 0;
+      return viewport.clientWidth + gap;
+    };
+    const pageCount = () => (maxScroll() <= 2 ? 1 : Math.ceil(maxScroll() / step() - 0.02) + 1);
+    const pageFromScroll = () => {
+      if (pages <= 1) return 0;
+      if (viewport.scrollLeft >= maxScroll() - 2) return pages - 1;
+      return Math.min(pages - 1, Math.round(viewport.scrollLeft / step()));
+    };
+
+    function goToPage(index) {
+      const i = Math.max(0, Math.min(pages - 1, index));
+      const left = i === pages - 1 ? maxScroll() : i * step();
+      current = i;
+      viewport.scrollTo({ left, behavior: behavior() });
+      update();
+    }
+
+    function renderDots() {
+      pages = pageCount();
+      current = Math.min(current, pages - 1);
+      dotsEl.textContent = '';
+      dotsEl.classList.toggle('hidden', pages <= 1);
+      for (let i = 0; i < pages; i++) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'carousel-dot';
+        b.setAttribute('aria-label', `Ir para o grupo ${i + 1} de ${pages}`);
+        b.addEventListener('click', () => { stop(); goToPage(i); });
+        dotsEl.appendChild(b);
+      }
+      update();
+    }
+
+    function update(e) {
+      if (e && e.type === 'scroll') current = pageFromScroll();
+      const page = current;
+      dotsEl.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        if (i === page) d.setAttribute('aria-current', 'true');
+        else d.removeAttribute('aria-current');
+      });
+      const single = pages <= 1;
+      prev.disabled = single || page === 0;
+      next.disabled = single || page === pages - 1;
+      prev.classList.toggle('hidden', single);
+      next.classList.toggle('hidden', single);
+    }
+
+    function stop() {
+      stopped = true;
+      if (autoplayId) { clearInterval(autoplayId); autoplayId = null; }
+    }
+
+    function startAutoplay() {
+      if (stopped || pages <= 1 || autoplayId) return;
+      autoplayId = setInterval(() => {
+        if (document.hidden) return;
+        goToPage(current >= pages - 1 ? 0 : current + 1);
+      }, 6500);
+    }
+
+    prev.addEventListener('click', () => { stop(); goToPage(current - 1); });
+    next.addEventListener('click', () => { stop(); goToPage(current + 1); });
+
+    viewport.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); stop(); goToPage(current + 1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); stop(); goToPage(current - 1); }
+      else if (e.key === 'Home') { e.preventDefault(); stop(); goToPage(0); }
+      else if (e.key === 'End') { e.preventDefault(); stop(); goToPage(pages - 1); }
+    });
+
+    // Qualquer interação do usuário encerra a reprodução automática
+    ['pointerdown', 'touchstart', 'wheel', 'focusin'].forEach((evt) => {
+      root.addEventListener(evt, stop, { passive: true });
+    });
+
+    viewport.addEventListener('scroll', update, { passive: true });
+
+    window.addEventListener('resize', () => { renderDots(); });
+
+    if (cards.length) renderDots();
+    startAutoplay();
+  }
+
+  /* Lightbox acessível com navegação por setas, teclado e foco preso */
+  function setupLightbox() {
+    const box = document.getElementById('lightbox');
+    const imgEl = document.getElementById('lb-img');
+    const capEl = document.getElementById('lb-caption');
+    if (!box || !imgEl) return;
+
+    const triggers = Array.from(document.querySelectorAll('[data-lightbox]'));
+    if (!triggers.length) return;
+    const closeBtn = box.querySelector('.lb-close');
+    const prevBtn = box.querySelector('.lb-prev');
+    const nextBtn = box.querySelector('.lb-next');
+    let index = 0;
+    let lastFocus = null;
+
+    function show(i) {
+      index = (i + triggers.length) % triggers.length;
+      const t = triggers[index];
+      const thumb = t.querySelector('img');
+      imgEl.src = t.dataset.full || thumb.currentSrc || thumb.src;
+      imgEl.alt = thumb ? thumb.alt : '';
+      capEl.textContent = t.dataset.caption || '';
+      const single = triggers.length < 2;
+      prevBtn.classList.toggle('hidden', single);
+      nextBtn.classList.toggle('hidden', single);
+    }
+
+    function open(i) {
+      lastFocus = document.activeElement;
+      show(i);
+      box.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+
+    function close() {
+      box.classList.add('hidden');
+      document.body.style.overflow = '';
+      imgEl.removeAttribute('src');
+      if (lastFocus) lastFocus.focus();
+    }
+
+    triggers.forEach((t, i) => t.addEventListener('click', () => open(i)));
+    closeBtn.addEventListener('click', close);
+    prevBtn.addEventListener('click', () => show(index - 1));
+    nextBtn.addEventListener('click', () => show(index + 1));
+    box.addEventListener('click', (e) => { if (e.target === box) close(); });
+
+    document.addEventListener('keydown', (e) => {
+      if (box.classList.contains('hidden')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(index - 1);
+      else if (e.key === 'ArrowRight') show(index + 1);
+      else if (e.key === 'Tab') {
+        const f = Array.from(box.querySelectorAll('button:not(.hidden)'));
+        const first = f[0];
+        const last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+
+    // Gestos de deslize no celular
+    let startX = null;
+    box.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener('touchend', (e) => {
+      if (startX === null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      startX = null;
+      if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
-    setupImageFallbacks();
+    setupReviewsCarousel();
+    setupLightbox();
     renderServicesList();
     updateBookingBox();
     setupFiltersAndControls();
